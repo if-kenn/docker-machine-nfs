@@ -136,7 +136,7 @@ configureNFS()
     
     # Update the /etc/exports file and restart nfsd
     (
-        echo '\n"/Users" '$prop_machine_ip' -alldirs -mapall='$(id -u)':'$(id -g)'\n' | sudo tee -a /etc/exports && \
+        echo '\n"/Users" '$prop_machine_ip'(insecure) -alldirs -mapall='$(id -u)':'$(id -g)'\n' | sudo tee -a /etc/exports && \
         awk '!a[$0]++' /etc/exports | sudo tee /etc/exports
         
     ) > /dev/null
